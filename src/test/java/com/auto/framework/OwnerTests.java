@@ -1,8 +1,11 @@
 package com.auto.framework;
 
 import com.auto.framework.listeners.TestListener;
+import com.auto.framework.pageobjects.petclinic.AddOwnerPage;
 import com.auto.framework.pageobjects.petclinic.EditOwnerPage;
 import com.auto.framework.pageobjects.petclinic.OwnersPage;
+import com.auto.framework.testdata.OwnerDataProvider;
+import com.auto.framework.testdata.OwnerModal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testng.annotations.Listeners;
@@ -19,6 +22,9 @@ public class OwnerTests extends BaseTests {
 
     @Autowired
     private EditOwnerPage editOwnerPage;
+
+    @Autowired
+    private AddOwnerPage addOwnerPage;
 
     @Test(priority = 2)
     public void testFindOwner_TC001() {// test find owner function
@@ -75,5 +81,43 @@ public class OwnerTests extends BaseTests {
         editOwnerPage.submitForm();
 
         assertThat(editOwnerPage.getSuccessMsg(), is("Owner Values Updated"));
+    }
+
+    @Test(priority = 10, dataProvider = "Owner Data", dataProviderClass = OwnerDataProvider.class)
+    public void testAddOwner_lastNameValidation_TC001(OwnerModal ownerData) {//test last name field validation
+        // Opens browser page
+        addOwnerPage.openPage();
+
+        // Perform testing actions
+        addOwnerPage.updateFormFields(ownerData);
+        addOwnerPage.updateLastName("");
+        addOwnerPage.submitForm();
+
+        assertThat(addOwnerPage.getLastNameValidationMsg(),is("must not be blank"));
+    }
+
+    @Test(priority = 11, dataProvider = "Owner Data", dataProviderClass = OwnerDataProvider.class)
+    public void testAddOwner_telephoneValidation_TC002(OwnerModal ownerData) {//test telephone field validation
+        // Opens browser page
+        addOwnerPage.openPage();
+
+        // Perform testing actions
+        addOwnerPage.updateFormFields(ownerData);
+        addOwnerPage.updateTelephone("91234567");
+        addOwnerPage.submitForm();
+
+        assertThat(addOwnerPage.getTelephoneValidationMsg(),is("Telephone must be a 10-digit number"));
+    }
+
+    @Test(priority = 13, dataProvider = "Owner Data", dataProviderClass = OwnerDataProvider.class)
+    public void testAddOwner_formSubmit_TC004(OwnerModal ownerData) {//test form submission success
+        // Opens browser page
+        addOwnerPage.openPage();
+
+        // Perform testing actions
+        addOwnerPage.updateFormFields(ownerData);
+        editOwnerPage.submitForm();
+
+        assertThat(addOwnerPage.getSuccessMsg(), is("New Owner Created"));
     }
 }
