@@ -17,7 +17,7 @@ public class JavaScriptActions extends ActionsBaseClass implements IJavaScriptAc
 	public void scrollIntoView(By by) {
 		webDriverWait.until(ExpectedConditions.elementToBeClickable(by));
 		log.debug("Test {}", driver.getTitle());
-		((JavascriptExecutor) WebDriverManagerSingleton.getDriver())
+		((JavascriptExecutor) driver)
 				.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(by));
 
 		log.debug("Scrolled into View..");
@@ -27,7 +27,7 @@ public class JavaScriptActions extends ActionsBaseClass implements IJavaScriptAc
 	public void click(By by) {
 		scrollIntoView(by);
 		WebElement element = driver.findElement(by);
-		((JavascriptExecutor) WebDriverManagerSingleton.getDriver()).executeScript("arguments[0].click();",
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();",
 				element);
 
 		log.debug("Clicked on Link..");

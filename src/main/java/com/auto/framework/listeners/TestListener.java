@@ -15,7 +15,6 @@ import org.testng.TestListenerAdapter;
 import org.testng.internal.TestResult;
 @Slf4j
 @Component
-@Scope("driverscope")
 public class TestListener extends TestListenerAdapter {
 
 	@Override

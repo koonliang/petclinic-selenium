@@ -44,8 +44,8 @@ public class BasePage extends ActionsBaseClass {
 	}
 
 	public void refreshDriver(){
-		driver = WebDriverManagerSingleton.getDriver();
-		webDriverWait = WebDriverManagerSingleton.getDriverWait();
+		driver = getDriver();
+		webDriverWait = getDriverWait();
 	}
 
 	public void teardownDriver() {

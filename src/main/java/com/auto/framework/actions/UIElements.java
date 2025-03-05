@@ -40,7 +40,6 @@ public class UIElements extends ActionsBaseClass implements IUIElements {
 
 	@Override
 	public void openURL(String url) {
-		log.info("Loading {}", url + ", driver1 = " + driver + ", driver2 = " + WebDriverManagerSingleton.getDriver());
 		driver.get(url);
 
 	}

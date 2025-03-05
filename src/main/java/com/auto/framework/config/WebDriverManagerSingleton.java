@@ -1,6 +1,8 @@
 package com.auto.framework.config;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,17 +17,35 @@ public class WebDriverManagerSingleton {
         // Private constructor to prevent direct instantiation
     }
 
-    public static WebDriver getDriver() {
+    public static WebDriver getEdgeDriver() {
         if (driver == null) {
-            WebDriverManager.edgedriver().setup();
             EdgeOptions options = new EdgeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            //options.addArguments("--headless=new");
+            WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver(options);
         }
         return driver;
     }
 
-    public static WebDriverWait getDriverWait() {
-        return new WebDriverWait(getDriver(), Duration.of(60, ChronoUnit.SECONDS));
+    public static WebDriver getChromeDriver() {
+        if (driver == null) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-debugging-port=9222");
+            options.addArguments("--remote-allow-origins=*");
+            //options.addArguments("--headless=new");
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver(options);
+        }
+        return driver;
+    }
+
+    public static WebDriverWait getEdgeDriverWait() {
+        return new WebDriverWait(getEdgeDriver(), Duration.of(60, ChronoUnit.SECONDS));
+    }
+
+    public static WebDriverWait getChromeDriverWait() {
+        return new WebDriverWait(getChromeDriver(), Duration.of(60, ChronoUnit.SECONDS));
     }
 
     public static void quitDriver() {

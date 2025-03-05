@@ -23,8 +23,16 @@ public class ActionsBaseClass {
 	public UtilityClass utilityClass;
 
 	public ActionsBaseClass() {
-		this.driver = WebDriverManagerSingleton.getDriver();
-		this.webDriverWait = WebDriverManagerSingleton.getDriverWait();
+		this.driver = getDriver();
+		this.webDriverWait = getDriverWait();
+	}
+
+	protected WebDriver getDriver(){
+		return WebDriverManagerSingleton.getEdgeDriver();
+	}
+
+	protected WebDriverWait getDriverWait(){
+		return WebDriverManagerSingleton.getEdgeDriverWait();
 	}
 
 	public void quitDriver() {
