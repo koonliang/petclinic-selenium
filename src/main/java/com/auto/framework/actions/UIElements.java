@@ -1,6 +1,5 @@
 package com.auto.framework.actions;
 
-import com.auto.framework.config.WebDriverManagerSingleton;
 import com.auto.framework.interfaces.IUIElements;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;

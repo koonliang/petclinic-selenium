@@ -1,4 +1,4 @@
-package com.auto.framework.testdata;
+package com.auto.framework.pageobjects.petclinic.testdata;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

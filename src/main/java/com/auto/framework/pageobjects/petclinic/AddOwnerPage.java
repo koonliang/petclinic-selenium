@@ -1,7 +1,7 @@
 package com.auto.framework.pageobjects.petclinic;
 
 import com.auto.framework.pageobjects.common.BasePage;
-import com.auto.framework.testdata.OwnerModal;
+import com.auto.framework.pageobjects.petclinic.testdata.OwnerModal;
 import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import org.openqa.selenium.By;
@@ -27,7 +27,7 @@ public class AddOwnerPage extends BasePage {
     public void openPage(){
         iUIElements.openURL(myProperties.getDemoUrl() + OWNERS_PAGE + "/new");
     }
-
+    @Step("Update all the form fields")
     public void updateFormFields(OwnerModal ownerModal){
         iUIElements.sendKeys(firstNameTextField, ownerModal.getFirstName());
         iUIElements.sendKeys(lastNameTextField, ownerModal.getLastName());

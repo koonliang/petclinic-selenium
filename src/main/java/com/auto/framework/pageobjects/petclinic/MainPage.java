@@ -2,7 +2,6 @@ package com.auto.framework.pageobjects.petclinic;
 
 import com.auto.framework.pageobjects.common.BasePage;
 import io.qameta.allure.Step;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

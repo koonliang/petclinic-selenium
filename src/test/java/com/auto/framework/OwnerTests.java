@@ -4,8 +4,8 @@ import com.auto.framework.listeners.TestListener;
 import com.auto.framework.pageobjects.petclinic.AddOwnerPage;
 import com.auto.framework.pageobjects.petclinic.EditOwnerPage;
 import com.auto.framework.pageobjects.petclinic.OwnersPage;
-import com.auto.framework.testdata.OwnerDataProvider;
-import com.auto.framework.testdata.OwnerModal;
+import com.auto.framework.pageobjects.petclinic.testdata.OwnerDataProvider;
+import com.auto.framework.pageobjects.petclinic.testdata.OwnerModal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testng.annotations.Listeners;
@@ -116,7 +116,7 @@ public class OwnerTests extends BaseTests {
 
         // Perform testing actions
         addOwnerPage.updateFormFields(ownerData);
-        editOwnerPage.submitForm();
+        addOwnerPage.submitForm();
 
         assertThat(addOwnerPage.getSuccessMsg(), is("New Owner Created"));
     }

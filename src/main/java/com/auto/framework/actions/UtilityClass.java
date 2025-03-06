@@ -1,6 +1,5 @@
 package com.auto.framework.actions;
 
-import com.auto.framework.config.WebDriverManagerSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

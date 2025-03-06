@@ -1,4 +1,4 @@
-package com.auto.framework.testdata;
+package com.auto.framework.pageobjects.petclinic.testdata;
 
 import com.github.javafaker.Faker;
 import org.springframework.stereotype.Component;
