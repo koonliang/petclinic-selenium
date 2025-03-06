@@ -3,7 +3,7 @@
 <suite name="Owner Suite">
 	<test thread-count="1" name="Test">
 		<classes>
-			<class name="com.auto.framework.OwnerTests" />
+			<class name="org.springframework.samples.petclinic.pageobjects.OwnerTests" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

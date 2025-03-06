@@ -3,7 +3,7 @@
 <suite name="Navigation Suite">
 	<test thread-count="1" name="Test">
 		<classes>
-			<class name="com.auto.framework.NavigationTests" />
+			<class name="org.springframework.samples.petclinic.pageobjects.NavigationTests" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
